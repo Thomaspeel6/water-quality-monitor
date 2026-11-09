@@ -1,24 +1,31 @@
-# UICWKgroup23  
+# Water Quality Monitor
 
-## Description  
-A collaborative Python project developed as part of a group coursework assignment. The application solves a specific problem (describe the problem here) and emphasizes teamwork, version control and software‑engineering best practices.  
+A desktop dashboard for exploring UK water-quality sampling data, built in C++ and Qt 6 as the group coursework for COMP2811 User Interfaces at the University of Leeds (team of four).
 
-## Features  
-- Modular design with clear separation of concerns  
-- User‑friendly interface (CLI or GUI—clarify as needed)  
-- Comprehensive test suite  
+It loads a year of UK water-quality sampling data (CSV) and presents it across several linked pages:
 
-## Getting Started  
-1. Clone the repo: `git clone https://github.com/Thomaspeel6/UICWKgroup23.git`  
-2. Install dependencies: `pip install -r requirements.txt`  
-3. Run the application: `python main.py`  
+- **Dashboard**: an overview of the dataset and key indicators
+- **Pollutant overview**: search a pollutant and chart its levels over time against safe thresholds
+- **Persistent organic pollutants (POPs)** and **fluorinated compounds (PFAS)**: focused views with charts and compliance colouring
+- **Environmental litter indicators**: litter and physical pollution by location
+- **Compliance dashboard**: which sites meet or breach regulatory standards
 
-## Technologies Used  
-- Python 3.x  
-- Any frameworks/libraries used (e.g., Flask, Django)  
+The interface follows the coursework's usability requirements, including basic internationalisation.
 
-## Contributing  
-This project was built collaboratively for coursework. If you’d like to experiment or improve features, feel free to fork and explore.  
+## Build
 
-## License  
-MIT License.
+Requires a C++17 compiler, CMake and Qt 6 (Widgets and Charts).
+
+```bash
+mkdir build && cd build
+cmake ..
+make
+./waterquality
+```
+
+## Structure
+
+- `main.cpp`, `window.*`: application entry point and main window
+- `dataset.*`, `model.*`, `waterquality.*`, `csv.hpp`: data loading and the table model
+- `*Page.*`: one class per dashboard page
+- `stats.*`: summary statistics
